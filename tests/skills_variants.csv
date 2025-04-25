@@ -1,0 +1,73 @@
+Python,Python 3,Python 2,py,python programming
+Java,Java 8,Java 11,java programming
+Machine Learning,ML,machine learning,artificial intelligence,AI
+Data Science,Data Analysis,Big Data,Data Engineering
+Deep Learning,DL,Neural Networks,artificial neural networks
+SQL,Structured Query Language,MySQL,PostgreSQL,SQL Server
+R,R programming,R language
+JavaScript,JS,TypeScript,JScript
+C#,C Sharp,C# programming
+Ruby,Ruby on Rails
+DevOps,Continuous Integration,CI/CD,Automation,Infrastructure as Code
+Docker,Containerization,Docker containers
+Kubernetes,K8s,Container Orchestration
+Hadoop,Big Data Hadoop,Apache Hadoop
+Spark,Apache Spark,Big Data Spark
+AWS,Amazon Web Services,AWS Cloud
+GCP,Google Cloud Platform,Google Cloud
+Azure,Microsoft Azure
+Tableau,Data Visualization,Tableau Software
+Excel,Microsoft Excel
+Power BI,Business Intelligence,Power BI Tool
+TensorFlow,TF,Tensor Flow
+PyTorch,Torch,Pytorch Deep Learning
+Keras,Keras Framework,Deep Learning Keras
+Scikit-learn,sklearn,Scikit Learn,machine learning sklearn
+MongoDB,NoSQL database,MongoDB database
+PostgreSQL,Postgres,PostgreSQL database
+SQLite,SQL database,SQLite database
+Redis,In-memory database,Redis database
+Elasticsearch,Search Engine,Elasticsearch Engine
+Apache Kafka,Kafka Streaming,Event Streaming
+Jenkins,CI server,Jenkins CI
+Git,Version Control,GitHub,GitLab
+GitHub,Git Hosting,GitHub Repositories
+GitLab,Git Hosting Service,GitLab CI
+CI/CD,Continuous Deployment,Continuous Delivery
+Scrum,Agile Scrum,Scrum Framework
+Kanban,Kanban Board,Kanban Methodology
+Agile,Agile Methodology,Agile Software Development
+Test Automation,Automated Testing,Automated Test
+Docker Swarm,Swarm Mode,Docker Cluster Management
+Ansible,Automation Tool,Configuration Management
+Chef,Chef Automation,Infrastructure as Code
+Puppet,Puppet Configuration Management
+Terraform,Infrastructure as Code,Terraform IaC
+Nginx,Web Server,Nginx Server
+Apache,Apache Web Server,Apache HTTPD
+Linux,Linux OS,Linux Systems
+Windows Server,Microsoft Server,Windows OS
+Ubuntu,Ubuntu OS,Linux Ubuntu
+CentOS,CentOS OS,Linux CentOS
+Red Hat,RHEL,Red Hat Linux
+VMware,Virtualization,VMware Solutions
+VirtualBox,Virtual Machine,VM VirtualBox
+VM,Virtual Machine,Virtualization Machine
+Cloud Computing,Cloud Services,Cloud Architecture
+Agile Project Management,Agile PM,Project Management Agile
+JIRA,Jira Software,Jira Agile
+Confluence,Team Collaboration Tool,Confluence Wiki
+Notion,Notion App,Notion Workspace
+Slack,Slack Messaging,Slack Team Communication
+Zoom,Video Conferencing,Zoom Meeting
+Microsoft Teams,Teams Communication,Microsoft Communication Tool
+Google Meet,Video Call,Google Video Conference
+Trello,Project Management Tool,Trello Board
+ClickUp,Project Management Software,ClickUp Tool
+Monday.com,Work Management Tool,Monday Task Management
+Superset, apache superset
+CloudFormation, aws cloudformation
+HRIS, human resources information system
+SAS, sas guide, sas miner
+Excel, microsoft excel
+English, inglés, english (intermediate-high)
