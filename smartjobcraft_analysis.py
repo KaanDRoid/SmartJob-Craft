@@ -61,17 +61,24 @@ else:
 ADS_GLOB_PATTERNS = [
     "tests/spanish_ad_*.txt",
     "tests/turkish_ad_*.txt",
+    "tests/english_ad_*.txt"
 ]
 
 OUTPUT_DIR = Path("job_json")
 OUTPUT_DIR.mkdir(exist_ok=True)
 
-CANDIDATE_SKILLS: Set[str] = {
-    "python", "sql", "tableau", "azure", "machine learning",
-    "excel", "r", "aws", "power bi"
+CANDIDATE_SKILLS: set[str] = {
+    "AWS", "Agile", "Airflow", "AutoCAD", "Blender", "C#", "Data Analysis",
+    "Docker", "DuckDB", "Excel", "FastAPI", "Feature Engineering", "Git",
+    "GitHub", "Godot", "IAM", "Jupyter Notebook", "Kafka", "Kanban",
+    "Machine Learning", "Matplotlib", "MediaPipe", "Model Deployment",
+    "MongoDB", "NumPy", "OpenCV", "Pandas", "Poetry", "PostgreSQL",
+    "PyTorch", "Python", "SQL", "SQLite", "Scikit-learn", "Scrum", "Seaborn",
+    "Spark", "TensorFlow", "Terraform", "Unity", "pytest"
 }
 
-# Dosyada birden çok ilan ayırıcı regex
+
+# regex for splitting ads
 SPLIT_REGEX = re.compile(r"^\s*#+\s*i?lan", re.IGNORECASE)  # satır '#ilan ...'
 
 # 3. Helper functions 
