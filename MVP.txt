@@ -1,0 +1,83 @@
+# SmartJob Craft – Stage 2: MVP Design (v1.3)
+
+*Last updated: 25 Apr 2025 – incorporates approval & final adjustments*
+
+---
+
+## 0. UI & Deployment
+
+- **Frontend**: **Streamlit**
+  - **Progress wizard**: 4‑step horizontal progress bar (Upload CV → Paste Job Ad → Review Match → Generate PDF).
+  - **Advanced Options** (collapsible sidebar panel):
+    - Log level toggle (`ERROR / INFO / DEBUG`). Off (ERROR‑only) by default.
+- **Runtime modes**
+  - *Cloud*: OpenAI GPT‑4o endpoints
+  - *Offline*: **Mistral‑7B‑Instruct** via llama‑cpp container (Apache‑2.0 licence)
+- **GDPR & Privacy**
+  - In‑memory processing; data purged immediately after PDF is delivered.
+  - Anonymised logs (skill mappings only) retained **14 days** → auto‑purged.
+  - “Privacy & Data Usage” modal in UI explains retention & processing.
+
+---
+
+## 1. System Architecture
+
+*(unchanged from v1.2 – see Mermaid graph)*
+
+Additions
+
+| Component         | New Detail                                                                  |
+| ----------------- | --------------------------------------------------------------------------- |
+| **ProjectRanker** | Scores each project vs job `must_have`; top‑rank fed to CoverLetter prompt. |
+
+---
+
+## 2. Prompt Templates (v1.3 highlights)
+
+- **JobParser**: retains two few‑shot examples.
+- **CoverLetter**: inserts sentence referencing *{top\_project}* and key must‑have.
+
+---
+
+## 3. Scoring Formula
+
+Same as v1.2 plus:
+
+```python
+# Project relevance bonus (0‑0.05)
+project_bonus = 0.05 if top_project_matches else 0
+final_score = base_score + exp_bonus + project_bonus
+```
+
+---
+
+## 4. Data Structures
+
+`Candidate.years_of_experience` already present.
+
+---
+
+## 5. Test Strategy
+
+| Layer               | Dataset                                                                | Key cases                       |
+| ------------------- | ---------------------------------------------------------------------- | ------------------------------- |
+| **SkillNormalizer** | 100‑row CSV incl. multilingual variants ("veri bilimi" → Data Science) | synonym & locale mapping        |
+| **JobParser**       | 20 synthetic ads + 6 real ads                                          | visa/remote/contract parsing    |
+| **PDF Renderer**    | EN + TR + ES content, long paragraphs & mobile viewport screenshots         | UTF‑8 glyphs, responsive layout |
+
+---
+
+## 6. Roadmap (3‑day Sprint – locked)
+
+*(unchanged tasks; multilingual CSV & progress bar now part of Day 1 & Day 3 respectively)*
+
+---
+
+## 7. Log & Debug Controls
+
+- Toggle added; logs stored locally in `./logs/` with 14‑day TTL via cron cleanup.
+
+---
+
+*Document approved – implementation in progress.*
+
