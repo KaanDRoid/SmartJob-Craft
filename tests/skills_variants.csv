@@ -1,73 +1,77 @@
-Python,Python 3,Python 2,py,python programming
-Java,Java 8,Java 11,java programming
-Machine Learning,ML,machine learning,artificial intelligence,AI
-Data Science,Data Analysis,Big Data,Data Engineering
-Deep Learning,DL,Neural Networks,artificial neural networks
-SQL,Structured Query Language,MySQL,PostgreSQL,SQL Server
-R,R programming,R language
-JavaScript,JS,TypeScript,JScript
-C#,C Sharp,C# programming
-Ruby,Ruby on Rails
-DevOps,Continuous Integration,CI/CD,Automation,Infrastructure as Code
-Docker,Containerization,Docker containers
-Kubernetes,K8s,Container Orchestration
-Hadoop,Big Data Hadoop,Apache Hadoop
-Spark,Apache Spark,Big Data Spark
-AWS,Amazon Web Services,AWS Cloud
-GCP,Google Cloud Platform,Google Cloud
-Azure,Microsoft Azure
-Tableau,Data Visualization,Tableau Software
-Excel,Microsoft Excel
-Power BI,Business Intelligence,Power BI Tool
-TensorFlow,TF,Tensor Flow
-PyTorch,Torch,Pytorch Deep Learning
-Keras,Keras Framework,Deep Learning Keras
-Scikit-learn,sklearn,Scikit Learn,machine learning sklearn
-MongoDB,NoSQL database,MongoDB database
-PostgreSQL,Postgres,PostgreSQL database
-SQLite,SQL database,SQLite database
-Redis,In-memory database,Redis database
-Elasticsearch,Search Engine,Elasticsearch Engine
-Apache Kafka,Kafka Streaming,Event Streaming
-Jenkins,CI server,Jenkins CI
-Git,Version Control,GitHub,GitLab
-GitHub,Git Hosting,GitHub Repositories
-GitLab,Git Hosting Service,GitLab CI
-CI/CD,Continuous Deployment,Continuous Delivery
-Scrum,Agile Scrum,Scrum Framework
-Kanban,Kanban Board,Kanban Methodology
-Agile,Agile Methodology,Agile Software Development
-Test Automation,Automated Testing,Automated Test
-Docker Swarm,Swarm Mode,Docker Cluster Management
-Ansible,Automation Tool,Configuration Management
-Chef,Chef Automation,Infrastructure as Code
-Puppet,Puppet Configuration Management
-Terraform,Infrastructure as Code,Terraform IaC
-Nginx,Web Server,Nginx Server
-Apache,Apache Web Server,Apache HTTPD
-Linux,Linux OS,Linux Systems
-Windows Server,Microsoft Server,Windows OS
-Ubuntu,Ubuntu OS,Linux Ubuntu
-CentOS,CentOS OS,Linux CentOS
-Red Hat,RHEL,Red Hat Linux
-VMware,Virtualization,VMware Solutions
-VirtualBox,Virtual Machine,VM VirtualBox
-VM,Virtual Machine,Virtualization Machine
-Cloud Computing,Cloud Services,Cloud Architecture
-Agile Project Management,Agile PM,Project Management Agile
-JIRA,Jira Software,Jira Agile
-Confluence,Team Collaboration Tool,Confluence Wiki
-Notion,Notion App,Notion Workspace
-Slack,Slack Messaging,Slack Team Communication
-Zoom,Video Conferencing,Zoom Meeting
-Microsoft Teams,Teams Communication,Microsoft Communication Tool
-Google Meet,Video Call,Google Video Conference
-Trello,Project Management Tool,Trello Board
-ClickUp,Project Management Software,ClickUp Tool
-Monday.com,Work Management Tool,Monday Task Management
-Superset, apache superset
-CloudFormation, aws cloudformation
-HRIS, human resources information system
-SAS, sas guide, sas miner
-Excel, microsoft excel
-English, inglés, english (intermediate-high)
+Skill,Variants,Category,Level,Related Skills
+Python,"Python, Python 3, Python 2, py, python programming, Python (Türkçe), Python (İspanyolca), Piton","Programming Languages","Intermediate","Pandas, NumPy, Scikit-learn, Flask, Django"
+Java,"Java, Java 8, Java 11, java programming, Java (Türkçe), Java (İspanyolca), Cava","Programming Languages","Advanced","Spring, Hibernate, Maven, Gradle"
+Machine Learning,"Machine Learning, ML, machine learning, artificial intelligence, AI, makine öğrenimi, aprendizaje automático, yapay zeka","Artificial Intelligence","Advanced","Deep Learning, Scikit-learn, TensorFlow, PyTorch"
+Data Science,"Data Science, Data Analysis, Big Data, Data Engineering, data science, veri bilimi, data scientist, ciencia de datos","Data Science","Intermediate","Machine Learning, Statistics, Python, R, SQL"
+Deep Learning,"Deep Learning, DL, Neural Networks, artificial neural networks, derin öğrenme, aprendizaje profundo","Artificial Intelligence","Advanced","TensorFlow, PyTorch, Keras, Convolutional Neural Networks"
+SQL,"SQL, Structured Query Language, MySQL, PostgreSQL, SQL Server, SQL (Türkçe), SQL (İspanyolca)","Databases","Intermediate","MongoDB, SQLite, Oracle, Data Warehousing"
+R,"R, R programming, R language, R (Türkçe), R (İspanyolca)","Programming Languages","Intermediate","Statistics, Data Visualization, ggplot2"
+JavaScript,"JavaScript, JS, TypeScript, JScript, JavaScript (Türkçe), JavaScript (İspanyolca)","Programming Languages","Intermediate","React, Node.js, Angular, Vue.js"
+C#,"C#, C Sharp, C# programming, C# (Türkçe), C# (İspanyolca)","Programming Languages","Advanced",".NET, ASP.NET, Unity"
+Ruby,"Ruby, Ruby on Rails, Ruby (Türkçe), Ruby (İspanyolca)","Programming Languages","Intermediate","Rails, Sinatra"
+DevOps,"DevOps, Continuous Integration, CI/CD, Automation, Infrastructure as Code, DevOps (Türkçe), DevOps (İspanyolca)","DevOps","Advanced","Docker, Kubernetes, Jenkins, Ansible"
+Docker,"Docker, Containerization, Docker containers, Docker (Türkçe), Docker (İspanyolca)","DevOps","Intermediate","Kubernetes, Container Orchestration"
+Kubernetes,"Kubernetes, K8s, Container Orchestration, Kubernetes (Türkçe), Kubernetes (İspanyolca)","DevOps","Advanced","Docker, Helm, Microservices"
+Hadoop,"Hadoop, Big Data Hadoop, Apache Hadoop, Hadoop (Türkçe), Hadoop (İspanyolca)","Big Data","Advanced","Spark, Hive, HDFS"
+Spark,"Spark, Apache Spark, Big Data Spark, PySpark, Spark (Türkçe), Spark (İspanyolca)","Big Data","Advanced","Hadoop, Scala, DataFrames"
+AWS,"AWS, Amazon Web Services, AWS Cloud, S3, EC2, AWS (Türkçe), AWS (İspanyolca)","Cloud Computing","Intermediate","GCP, Azure, CloudFormation"
+GCP,"GCP, Google Cloud Platform, Google Cloud, GCP (Türkçe), GCP (İspanyolca)","Cloud Computing","Intermediate","AWS, Azure, BigQuery"
+Azure,"Azure, Microsoft Azure, Azure (Türkçe), Azure (İspanyolca)","Cloud Computing","Intermediate","AWS, GCP, Azure DevOps"
+Tableau,"Tableau, Data Visualization, Tableau Software, Tableau (Türkçe), Tableau (İspanyolca)","Data Visualization","Intermediate","Power BI, Excel, Data Analysis"
+Excel,"Excel, Microsoft Excel, Excel (Türkçe), Excel (İspanyolca)","Data Analysis","Beginner","Tableau, Power BI, Pivot Tables"
+Power BI,"Power BI, Business Intelligence, Power BI Tool, powerbi, power bi, Power BI (Türkçe), Power BI (İspanyolca)","Data Visualization","Intermediate","Tableau, Excel, DAX"
+TensorFlow,"TensorFlow, TF, Tensor Flow, TensorFlow (Türkçe), TensorFlow (İspanyolca)","Artificial Intelligence","Advanced","PyTorch, Keras, Neural Networks"
+PyTorch,"PyTorch, Torch, Pytorch Deep Learning, PyTorch (Türkçe), PyTorch (İspanyolca)","Artificial Intelligence","Advanced","TensorFlow, Keras, Neural Networks"
+Keras,"Keras, Keras Framework, Deep Learning Keras, Keras (Türkçe), Keras (İspanyolca)","Artificial Intelligence","Intermediate","TensorFlow, PyTorch, Neural Networks"
+Scikit-learn,"Scikit-learn, sklearn, Scikit Learn, machine learning sklearn, Scikit-learn (Türkçe), Scikit-learn (İspanyolca)","Machine Learning","Intermediate","Python, Machine Learning, Data Science"
+MongoDB,"MongoDB, NoSQL database, MongoDB database, MongoDB (Türkçe), MongoDB (İspanyolca)","Databases","Intermediate","SQL, Redis, NoSQL"
+PostgreSQL,"PostgreSQL, Postgres, PostgreSQL database, PostgreSQL (Türkçe), PostgreSQL (İspanyolca)","Databases","Advanced","SQL, MySQL, Database Administration"
+SQLite,"SQLite, SQL database, SQLite database, SQLite (Türkçe), SQLite (İspanyolca)","Databases","Beginner","SQL, PostgreSQL, MySQL"
+Redis,"Redis, In-memory database, Redis database, Redis (Türkçe), Redis (İspanyolca)","Databases","Intermediate","MongoDB, Caching"
+Elasticsearch,"Elasticsearch, Search Engine, Elasticsearch Engine, Elasticsearch (Türkçe), Elasticsearch (İspanyolca)","Search Engines","Advanced","Apache Kafka, Logstash"
+Apache Kafka,"Apache Kafka, Kafka Streaming, Event Streaming, Apache Kafka (Türkçe), Apache Kafka (İspanyolca)","Big Data","Advanced","Elasticsearch, Spark Streaming"
+Jenkins,"Jenkins, CI server, Jenkins CI, Jenkins (Türkçe), Jenkins (İspanyolca)","DevOps","Intermediate","Git, CI/CD, Ansible"
+Git,"Git, Version Control, GitHub, GitLab, Git (Türkçe), Git (İspanyolca)","Version Control","Beginner","Jenkins, GitHub, GitLab"
+GitHub,"GitHub, Git Hosting, GitHub Repositories, GitHub (Türkçe), GitHub (İspanyolca)","Version Control","Beginner","Git, GitLab, Bitbucket"
+GitLab,"GitLab, Git Hosting Service, GitLab CI, GitLab (Türkçe), GitLab (İspanyolca)","Version Control","Intermediate","Git, GitHub, CI/CD"
+CI/CD,"CI/CD, Continuous Deployment, Continuous Delivery, CI/CD (Türkçe), CI/CD (İspanyolca)","DevOps","Advanced","Jenkins, Git, Docker"
+Scrum,"Scrum, Agile Scrum, Scrum Framework, Scrum (Türkçe), Scrum (İspanyolca)","Agile","Intermediate","Kanban, Agile, JIRA"
+Kanban,"Kanban, Kanban Board, Kanban Methodology, Kanban (Türkçe), Kanban (İspanyolca)","Agile","Beginner","Scrum, Agile, Trello"
+Agile,"Agile, Agile Methodology, Agile Software Development, Agile (Türkçe), Agile (İspanyolca)","Agile","Intermediate","Scrum, Kanban, JIRA"
+Test Automation,"Test Automation, Automated Testing, Automated Test, Test Otomasyonu, Automatización de Pruebas","Testing","Advanced","Selenium, JUnit, TestNG"
+Docker Swarm,"Docker Swarm, Swarm Mode, Docker Cluster Management, Docker Swarm (Türkçe), Docker Swarm (İspanyolca)","DevOps","Advanced","Docker, Kubernetes"
+Ansible,"Ansible, Automation Tool, Configuration Management, Ansible (Türkçe), Ansible (İspanyolca)","DevOps","Intermediate","Chef, Puppet, Terraform"
+Chef,"Chef, Chef Automation, Infrastructure as Code, Chef (Türkçe), Chef (İspanyolca)","DevOps","Advanced","Ansible, Puppet, Terraform"
+Puppet,"Puppet, Puppet Configuration Management, Puppet (Türkçe), Puppet (İspanyolca)","DevOps","Advanced","Ansible, Chef, Terraform"
+Terraform,"Terraform, Infrastructure as Code, Terraform IaC, Terraform (Türkçe), Terraform (İspanyolca)","DevOps","Intermediate","AWS, GCP, Azure, CloudFormation"
+Nginx,"Nginx, Web Server, Nginx Server, Nginx (Türkçe), Nginx (İspanyolca)","Web Servers","Intermediate","Apache, Load Balancing"
+Apache,"Apache, Apache Web Server, Apache HTTPD, Apache (Türkçe), Apache (İspanyolca)","Web Servers","Intermediate","Nginx, Tomcat"
+Linux,"Linux, Linux OS, Linux Systems, Linux (Türkçe), Linux (İspanyolca)","Operating Systems","Intermediate","Ubuntu, CentOS, Bash"
+Windows Server,"Windows Server, Microsoft Server, Windows OS, Windows Server (Türkçe), Windows Server (İspanyolca)","Operating Systems","Advanced","Linux, Active Directory"
+Ubuntu,"Ubuntu, Ubuntu OS, Linux Ubuntu, Ubuntu (Türkçe), Ubuntu (İspanyolca)","Operating Systems","Beginner","Linux, Debian"
+CentOS,"CentOS, CentOS OS, Linux CentOS, CentOS (Türkçe), CentOS (İspanyolca)","Operating Systems","Intermediate","Linux, Red Hat"
+Red Hat,"Red Hat, RHEL, Red Hat Linux, Red Hat (Türkçe), Red Hat (İspanyolca)","Operating Systems","Advanced","Linux, CentOS"
+VMware,"VMware, Virtualization, VMware Solutions, VMware (Türkçe), VMware (İspanyolca)","Virtualization","Advanced","VirtualBox, Hyper-V"
+VirtualBox,"VirtualBox, Virtual Machine, VM VirtualBox, VirtualBox (Türkçe), VirtualBox (İspanyolca)","Virtualization","Beginner","VMware, Virtual Machines"
+VM,"VM, Virtual Machine, Virtualization Machine, VM (Türkçe), VM (İspanyolca)","Virtualization","Intermediate","VMware, VirtualBox"
+Cloud Computing,"Cloud Computing, Cloud Services, Cloud Architecture, Bulut Bilişim, Computación en la Nube","Cloud Computing","Intermediate","AWS, GCP, Azure"
+Agile Project Management,"Agile Project Management, Agile PM, Project Management Agile, Çevik Proje Yönetimi, Gestión de Proyectos Ágil","Project Management","Advanced","Scrum, JIRA, Confluence"
+JIRA,"JIRA, Jira Software, Jira Agile, JIRA (Türkçe), JIRA (İspanyolca)","Project Management","Intermediate","Confluence, Agile, Trello"
+Confluence,"Confluence, Team Collaboration Tool, Confluence Wiki, Confluence (Türkçe), Confluence (İspanyolca)","Project Management","Beginner","JIRA, Notion"
+Notion,"Notion, Notion App, Notion Workspace, Notion (Türkçe), Notion (İspanyolca)","Productivity","Beginner","Confluence, Trello"
+Slack,"Slack, Slack Messaging, Slack Team Communication, Slack (Türkçe), Slack (İspanyolca)","Communication","Beginner","Microsoft Teams, Zoom"
+Zoom,"Zoom, Video Conferencing, Zoom Meeting, Zoom (Türkçe), Zoom (İspanyolca)","Communication","Beginner","Google Meet, Microsoft Teams"
+Microsoft Teams,"Microsoft Teams, Teams Communication, Microsoft Communication Tool, Microsoft Teams (Türkçe), Microsoft Teams (İspanyolca)","Communication","Intermediate","Slack, Zoom"
+Google Meet,"Google Meet, Video Call, Google Video Conference, Google Meet (Türkçe), Google Meet (İspanyolca)","Communication","Beginner","Zoom, Microsoft Teams"
+Trello,"Trello, Project Management Tool, Trello Board, Trello (Türkçe), Trello (İspanyolca)","Project Management","Beginner","JIRA, Kanban"
+ClickUp,"ClickUp, Project Management Software, ClickUp Tool, ClickUp (Türkçe), ClickUp (İspanyolca)","Project Management","Intermediate","Monday.com, Asana"
+Monday.com,"Monday.com, Work Management Tool, Monday Task Management, Monday.com (Türkçe), Monday.com (İspanyolca)","Project Management","Intermediate","ClickUp, Trello"
+Superset,"Superset, apache superset, Superset (Türkçe), Superset (İspanyolca)","Data Visualization","Advanced","Tableau, Power BI"
+CloudFormation,"CloudFormation, aws cloudformation, CloudFormation (Türkçe), CloudFormation (İspanyolca)","Cloud Computing","Advanced","Terraform, AWS"
+HRIS,"HRIS, human resources information system, HRIS (Türkçe), HRIS (İspanyolca)","Human Resources","Intermediate",""
+SAS,"SAS, sas guide, sas miner, SAS (Türkçe), SAS (İspanyolca)","Data Analysis","Advanced","R, Statistics, SPSS"
+English,"English, inglés, english (intermediate-high), english, ingilizce","Languages","Intermediate","Spanish, Turkish"
+Statistics,"Statistics, istatistik, statistics, statistical, estadística","Data Science","Intermediate","Data Science, R, Probability"
+Computer Science,"Computer Science, computer science, bilgisayar bilimi, ciencia de la computación","Computer Science","Advanced","Programming Languages, Algorithms"
+Spanish,"Spanish, spanish, español","Languages","Beginner","English"
+Apache Airflow,"Apache Airflow, Airflow, Apache Airflow (Türkçe), Apache Airflow (İspanyolca)","Data Engineering","Advanced","Spark, Data Pipelines"
