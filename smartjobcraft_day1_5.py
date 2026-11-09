@@ -1,7 +1,7 @@
 from pathlib import Path
 import re, os, json, pandas as pd
 from smartjobcraft_day1 import JobParser, SkillNormalizer, score_candidate
-from cv_parser import extract_skills_and_languages # Changed import
+from cv_parser import extract_skills_and_languages
 
 # parameters
 CV_FILE         = Path("Kaan_AK_CV.pdf")     # Path to your CV file
@@ -13,7 +13,7 @@ CAND_YEARS_EXP  = 3    # Candidate's years of experience
 # Keywords to identify relevant educational background for a potential bonus
 EDU_KEYWORDS    = {"engineering", "mathematics", "statistics"}
 
-# llms (Language Learning Models)
+# LLM backend
 from smartjobcraft_day1 import _dummy_llm   # Import a dummy LLM for offline testing
 if USE_OPENAI:
     from openai import OpenAI

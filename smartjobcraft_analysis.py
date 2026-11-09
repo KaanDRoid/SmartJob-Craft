@@ -2,10 +2,11 @@
 
 Batch-analysis helper script
 ============================
-- Reads: *tests/spanish_ad_*.txt*, *tests/turkish_ad_*.txt* (each file can contain multiple #job sections)
+- Reads: tests/spanish_ad_*.txt, tests/turkish_ad_*.txt, tests/english_ad_*.txt
+  (one file can hold several ads, separated by '# ilan' headings)
 - Uses: smartjobcraft_day1.JobParser, SkillNormalizer, score_candidate
-- Outputs: JSON for each job posting -> job_json/<file>__<n>.json
-- To console: score table + list of missing skills
+- Outputs: one JSON per job posting in job_json/<file>__<n>.json and summary.csv
+- Console: score table + list of missing skills
 
 How to run
 ----------
@@ -13,16 +14,15 @@ $ python smartjobcraft_analysis.py
 
 LLM selection
 -------------
-Default: `_dummy_llm` (fixed JSON). To use a real model, set `USE_OPENAI = True`,
-and set the OPENAI_API_KEY environment variable.
+USE_OPENAI = True by default and needs the OPENAI_API_KEY environment variable.
+If the key is missing, or USE_OPENAI = False, `_dummy_llm` (fixed JSON) is used instead.
 """
 from __future__ import annotations
 
 import json
 import re
-from collections import Counter # Counter is not used in this script, consider removing if not needed elsewhere.
 from pathlib import Path
-from typing import Iterable, List, Set, Tuple # Set and Counter are not used, consider removing.
+from typing import Iterable, List, Tuple
 
 # Project imports
 from smartjobcraft_day1 import (
@@ -35,15 +35,13 @@ from smartjobcraft_day1 import (
 # 1. LLM backends
 
 
-# import json as _json # json is already imported as json, _json alias is not necessary.
-
 def _dummy_llm(prompt: str) -> str:
     """Returns a fixed JSON string for speed and offline testing."""
     return json.dumps(
         {
             "job_title": "Stub Title",
             "company": "Stub Co",
-            "location": "—", # Placeholder for location
+            "location": "N/A",
             "contract_type": None,
             "must_have": ["Python"],
             "nice_to_have": [],

@@ -9,11 +9,8 @@ import json
 
 # Internal imports
 from smartjobcraft_day1 import JobParser, SkillNormalizer, score_candidate, Candidate
-# Import new function from cv_parser
-from cv_parser import extract_skills_and_languages, extract_cv_projects
-from smartjobcraft_day1_5 import min_exp, education_bonus # Can be removed if not used
+from cv_parser import extract_skills_and_languages
 from smartjobcraft_gaprec import PROMPT as GAP_PROMPT, LLM as GAP_LLM
-# Import updated functions from smartjobcraft_projectranker
 from smartjobcraft_projectranker import rank_projects, compute_project_bonus, extract_projects as ranker_extract_projects
 from smartjobcraft_coverletter import generate_cover_letter
 import unicodedata
@@ -64,7 +61,7 @@ def parse_llm(prompt: str) -> str:
     return resp.choices[0].message.content
 
 # Sidebar Chat Bot
-st.sidebar.title("🎙 Career Coach")
+st.sidebar.title("Career Coach")
 if "history" not in st.session_state:
     st.session_state.history = []
 user_q = st.sidebar.text_input("Ask a question:", "")
@@ -81,14 +78,14 @@ for role, msg in st.session_state.history:
     elif role == "assistant": # Don't show system messages
         st.sidebar.markdown(f"**Bot:** {msg}")
 
-if st.sidebar.button("👍 This response was helpful"):
+if st.sidebar.button("This response was helpful"):
     logging.info("User marked last response as helpful")
-if st.sidebar.button("👎 This response was not helpful"):
+if st.sidebar.button("This response was not helpful"):
     logging.info("User marked last response as unhelpful")
 st.sidebar.markdown(f"**API calls:** {st.session_state.api_calls}")
 
 # Main Page
-st.title("SmartJob Craft 🚀")
+st.title("SmartJob Craft")
 
 # CV Upload
 st.header("1. Upload Your CV")
@@ -136,7 +133,7 @@ st.header("2. Paste Your Job Ad")
 job_ad = st.text_area("Paste the job description here", height=200)
 
 # Matching & Scoring
-if st.button("🔍 Match and Score"):
+if st.button("Match and Score"):
     if not cv_file or not job_ad.strip():
         st.error("Please both upload a CV and enter a job description.")
     elif not st.session_state.cand_skills and not st.session_state.cand_languages:
@@ -179,7 +176,7 @@ if st.button("🔍 Match and Score"):
         
         # Micro-Learning Plan
         if score < 0.6 and gaps:
-            st.subheader("📚 Micro-Learning Plan")
+            st.subheader("Micro-Learning Plan")
             # Format GAP_PROMPT correctly
             micro_learning_prompt = GAP_PROMPT.format(title=job.title, missing=", ".join(gaps))
             try:
@@ -193,7 +190,7 @@ if st.button("🔍 Match and Score"):
                 st.error(f"Error generating micro-learning plan: {e}")
         
         # Project Ranking
-        st.subheader("📁 Project Ranking")
+        st.subheader("Project Ranking")
         # Create Candidate object
         candidate_profile = Candidate(
             name="Candidate", # Real name could be extracted from CV
@@ -212,7 +209,7 @@ if st.button("🔍 Match and Score"):
         st.write(f"**Final Score (with Project Bonus):** {final_score:.2f}")
 
         # Cover Letter Generation
-        st.subheader("📝 Generate Cover Letter")
+        st.subheader("Cover Letter")
         cover_letter_meta = {
             "job_title": job.title,
             "company": job.company,
@@ -229,7 +226,7 @@ if st.button("🔍 Match and Score"):
         
         # PDF Download (if letter exists)
         if letter:
-            st.subheader("📄 Download Cover Letter")
+            st.subheader("Download Cover Letter")
             from fpdf import FPDF
             def clean_text_for_pdf(text):
                 # Simple cleaning, additional processing might be needed for complex characters
@@ -247,7 +244,7 @@ if st.button("🔍 Match and Score"):
                 pdf.output(pdf_output_path, "F") # "F" saves to disk
                 with open(pdf_output_path, "rb") as fp:
                     st.download_button(
-                        label="📥 Download Cover Letter as PDF",
+                        label="Download Cover Letter as PDF",
                         data=fp,
                         file_name="coverletter.pdf",
                         mime="application/pdf"
@@ -266,7 +263,7 @@ if st.button("🔍 Match and Score"):
         }]
         summary_df = pd.DataFrame(summary_data)
         st.download_button(
-            label="📥 Download Results as CSV",
+            label="Download Results as CSV",
             data=summary_df.to_csv(index=False, encoding="utf-8-sig"),
             file_name="match_summary.csv",
             mime="text/csv"
