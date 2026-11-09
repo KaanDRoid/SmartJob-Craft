@@ -69,7 +69,7 @@ def extract_skills_and_languages(cv_path: Path, normalizer: SkillNormalizer) -> 
             technical_skills.add(canonical) 
     
     # Extract languages from the "Languages" section or general text
-    # A more robust way would be to look for a specific "Languages" section header
+    # A stricter approach would be to look for a specific "Languages" section header
     language_section_match = re.search(r"(Languages|Idiomas|Diller)\s*([\s\S]*?)(?:Technical Skills|Projects|Experience|Education|$)", raw_text, re.IGNORECASE)
     text_to_search_langs = raw_text # Default to searching the whole text
     if language_section_match:
