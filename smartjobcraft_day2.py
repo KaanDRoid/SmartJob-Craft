@@ -1,10 +1,11 @@
 # smartjobcraft_day2.py
 """
-SmartJob Craft - Day 2 Implementation
-This module extends the base functionality with:
-  • Project ranking based on job requirements
-  • Skill gap analysis and learning plan generation
-  • Enhanced candidate scoring with education and experience bonuses
+SmartJob Craft batch pipeline (second version of smartjobcraft_day1_5.py).
+On top of the basic scoring it adds:
+  - project ranking against the job requirements
+  - learning plans for skill gaps (via smartjobcraft_gaprec)
+  - experience and education bonuses
+Outputs job_json2/, learning_plans/ and summary2.csv, which smartjobcraft_coverletter.py reads.
 """
 
 from __future__ import annotations
@@ -284,7 +285,7 @@ def main():
                 prompt = GAP_PROMPT.format(title=job.title, missing=", ".join(gaps))
                 plan = json.loads(GAP_LLM(prompt))["plan"]
                 LEARN_DIR.joinpath(f"{fid}.md").write_text(plan, encoding="utf-8")
-                print(f"✅ {fid} → learning plan")
+                print(f"{fid}: learning plan saved")
 
     # Write summary to CSV and display results
     import pandas as pd

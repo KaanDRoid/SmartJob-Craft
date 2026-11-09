@@ -1,6 +1,7 @@
 # smartjobcraft_coverletter.py
-# This module generates tailored cover letters for job applications based on job metadata and candidate's relevant projects.
-# It leverages OpenAI's API to create personalized and concise cover letters addressing skill gaps.
+# Writes a short cover letter per job using the OpenAI API, based on the parsed job
+# (title, company, must-have skills) and the candidate's best-matching project.
+# Used by the Streamlit UI (generate_cover_letter) and as a batch script (main).
 
 from __future__ import annotations
 import os, json, re
@@ -10,18 +11,12 @@ from typing import Dict
 from openai import OpenAI
 
 # --- CONFIG ---
-OPENAI_KEY = os.getenv("OPENAI_API_KEY")
-if not OPENAI_KEY:
-    raise RuntimeError("🚨 OPENAI_API_KEY environment variable is not set!")
-client = OpenAI(api_key=OPENAI_KEY)
-
 # Directory for input job JSON files (ensure this is the correct directory you intend to use)
 JOB_JSON_DIR   = Path("job_json2") 
 # Path to the summary CSV file (ensure this is the correct file)
 SUMMARY_CSV    = Path("summary2.csv") 
 # Directory where generated cover letters will be saved
 OUTPUT_DIR     = Path("cover_letters")
-OUTPUT_DIR.mkdir(exist_ok=True) # Create the output directory if it doesn't exist
 
 # --- Prompt Template ---
 # This template is used to instruct the LLM on how to generate the cover letter.
@@ -140,14 +135,16 @@ def generate_cover_letter(meta: dict, llm_client) -> str:
 # --- Main ---
 def main():
     """Main function to load job metadata and generate cover letters."""
-    # Initialize the OpenAI client locally within main or ensure the global one is used if preferred.
-    # Using a local client here to be explicit.
-    local_client = OpenAI(api_key=OPENAI_KEY) 
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        raise RuntimeError("OPENAI_API_KEY environment variable is not set.")
+    local_client = OpenAI(api_key=api_key)
+    OUTPUT_DIR.mkdir(exist_ok=True)
 
     print("Loading job metadata to generate cover letters...")
     metas = load_job_metadata()
     if not metas:
-        print("🚫 No suitable job postings (score < 0.6 and top_project identified) were found to generate cover letters for.")
+        print("No suitable job postings (score < 0.6 and top_project identified) were found to generate cover letters for.")
         return
 
     print(f"Found {len(metas)} job(s) eligible for cover letter generation.")
@@ -156,15 +153,15 @@ def main():
         letter = generate_cover_letter(meta, local_client)
         
         if "[Error generating cover letter]" in letter:
-            print(f"❌ Failed to generate cover letter for {fid}.")
+            print(f"Failed to generate cover letter for {fid}.")
             continue # Skip saving if there was an error
 
         out_path = OUTPUT_DIR / f"{fid}.md"
         try:
             out_path.write_text(letter, encoding="utf-8")
-            print(f"✅ Cover letter for {fid} saved to {out_path} ({len(letter.split())} words)")
+            print(f"Cover letter for {fid} saved to {out_path} ({len(letter.split())} words)")
         except Exception as e:
-            print(f"❌ Error saving cover letter for {fid} to {out_path}: {e}")
+            print(f"Error saving cover letter for {fid} to {out_path}: {e}")
 
 if __name__ == "__main__":
     main()

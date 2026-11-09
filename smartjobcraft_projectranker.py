@@ -1,16 +1,21 @@
-from typing import Tuple, List, Set # Set eklendi
+from typing import Tuple, List
 import re
-from smartjobcraft_day1 import Job, Candidate, SkillNormalizer # SkillNormalizer import edildi
-import PyPDF2 # PyPDF2 import edildi
+from pathlib import Path
+from smartjobcraft_day1 import Job, Candidate, SkillNormalizer
+import PyPDF2
 
 _RX_TOKEN = re.compile(r"[A-Za-zÀ-ÖØ-öø-ÿ0-9\+\#\.\-]{2,}")
 
 def _tokens(text: str) -> List[str]:
-    """Basit tokenizasyon → alfa‑num + '.' '+' '#' karakterlerini korur."""
+    """Simple tokenizer: keeps alphanumerics plus '.', '+', '#' and '-'."""
     return _RX_TOKEN.findall(text)
 
 def extract_projects(cv_path: str) -> list[str]:
-    """Extract project descriptions from the CV's Projects section."""
+    """Extract project descriptions from the CV's Projects section.
+
+    Note: project titles are matched with a regex written for the author's own CV.
+    cv_parser.extract_cv_projects is a more general (and looser) alternative.
+    """
     with open(cv_path, 'rb') as file:
         reader = PyPDF2.PdfReader(file)
         text = ""
@@ -88,7 +93,7 @@ def rank_projects(
 
     top_proj = ""
     best_cov = 0.0
-    # More comprehensive stop words might be beneficial depending on project description style
+    # English stop words plus a few Turkish ones for Turkish-language CVs
     stop_words = {'a', 'an', 'the', 'is', 'was', 'were', 'of', 'in', 'on', 'at', 'to', 'for', 'with', 'by', 'and', 'or', 'but', 'if', 'as', 'my', 'this', 'that', 'project', 'developed', 'using', 'ile', 've', 'yaptım.', 'analizi', 'bir', 'için'}
     
     for proj_text in candidate.projects:
@@ -145,7 +150,7 @@ if __name__ == "__main__":
             # Assign some dummy projects if none are found, for testing rank_projects
             projects = [
                 "E-commerce Customer Spending Analysis: Analyzed clothing e-commerce and in store session data using Python (Pandas, Matplotlib, Seaborn), SQL, and Tableau to identify spending patterns and provide actionable insights for marketing strategies.",
-                "LinguaLink: Real Time ASL ↔ Voice Translator: Developing an AI driven addon that translates American Sign Language to voice and vice versa in real time using Python (TensorFlow, OpenCV, MediaPipe).",
+                "LinguaLink: Real Time ASL <-> Voice Translator: Developing an AI driven addon that translates American Sign Language to voice and vice versa in real time using Python (TensorFlow, OpenCV, MediaPipe).",
                 "Big Data Infrastructure Exercise: Completed a series of hands-on exercises on big data storage, processing, and analysis using tools like Hadoop, Spark, Kafka, and Hive. Focused on building scalable data pipelines and performing distributed computations."
             ]
 

@@ -1,10 +1,9 @@
 """
-SmartJob Craft - Day 1 Implementation
-Components:
-  • JobParser (LLM-powered, few shot)
-  • SkillNormalizer (rapidfuzz + CSV synonyms)
-  • Matcher & Scorer (v1.3 formula)
-NOTE: LLM calls are stubbed; replace self._call_llm with your engine of choice.
+SmartJob Craft core components, shared by the UI and the batch scripts:
+  - JobParser: few-shot LLM prompt that turns a job ad into a Job dataclass
+  - SkillNormalizer: maps skill variants to a canonical name (CSV synonyms + rapidfuzz)
+  - score_candidate: weighted must-have / nice-to-have skill match plus bonuses
+The LLM is passed in as a plain function (prompt -> JSON string), so tests can use _dummy_llm.
 """
 from __future__ import annotations
 
@@ -19,7 +18,6 @@ from typing import Iterable, List, Set
 from rapidfuzz import fuzz, process
 import openai
 import os
-# import json # Already imported
 
 # Data Models
 
@@ -51,7 +49,7 @@ class Candidate:
     years_of_experience: int | None = None
 
 
-# JobParser – few‑shot prompt template
+# JobParser - few-shot prompt template
 
 # This prompt provides examples to the LLM for how to parse job postings.
 FEW_SHOT_PROMPT = """SYSTEM: You are an expert HR analyst.
@@ -102,7 +100,7 @@ class JobParser:
             language_requirement=data.get("language_requirement", []),
         )
 
-# SkillNormalizer – synonym → canonical mapping
+# SkillNormalizer - synonym to canonical mapping
 
 class SkillNormalizer:
     """Normalizes skill names to a canonical form using a CSV of synonyms and fuzzy matching."""
@@ -112,13 +110,26 @@ class SkillNormalizer:
         self._load(csv_path)
 
     def _load(self, path: str | Path):
-        """Loads skill synonyms from a CSV file."""
+        """Loads skill synonyms from a CSV file.
+
+        Expected columns: Skill, Variants, ... where Variants is a comma-separated
+        list inside one cell. Only the first two columns are used.
+        """
         with open(path, newline="", encoding="utf-8") as fh:
-            reader = csv.reader(fh)
-            for canonical, *variants in reader:
-                self._canonical[canonical.lower()] = canonical  # Map canonical to itself
-                for v in variants:
-                    self._canonical[v.lower()] = canonical # Map variants to canonical
+            rows = [r for r in csv.reader(fh) if r and r[0].strip()]
+        if rows and rows[0][0].strip().lower() == "skill":
+            rows = rows[1:]  # header
+        # Variants first, then canonical names, so a canonical name always maps to itself
+        for row in rows:
+            canonical = row[0].strip()
+            if len(row) > 1:
+                for v in row[1].split(","):
+                    v = v.strip()
+                    if v:
+                        self._canonical[v.lower()] = canonical
+        for row in rows:
+            canonical = row[0].strip()
+            self._canonical[canonical.lower()] = canonical
 
     def canonical(self, skill: str) -> str:
         """Returns the canonical form of a skill."""
@@ -129,7 +140,7 @@ class SkillNormalizer:
         match, score, _ = process.extractOne(key, self._canonical.keys(), scorer=fuzz.WRatio)
         if score >= self._score_cutoff:
             return self._canonical[match]
-        return skill  # Return as‑is if no good match
+        return skill  # Return as-is if no good match
 
     def canonical_set(self, skills: Iterable[str]) -> Set[str]:
         """Returns a set of canonical skill names from an iterable of skills."""
@@ -182,17 +193,17 @@ def score_candidate(
     return base_score + exp_bonus + project_bonus
 
 
-# Stub LLM call (replace in production)
+# LLM backends
 
 
 def _dummy_llm(prompt: str) -> str:
-    """Return a hard‑coded minimal JSON so unit tests do not hit an API.
+    """Return a hard-coded minimal JSON so unit tests do not hit an API.
        Useful for offline testing or when API access is unavailable.
     """
     _template = {
         "job_title": "Stub Title",
         "company": "Stub Co",
-        "location": "—", # Placeholder for location
+        "location": "N/A",
         "contract_type": None,
         "must_have": ["Python"],
         "nice_to_have": [],
@@ -226,7 +237,7 @@ def _openai_llm(prompt: str) -> str:
         # Fallback or error handling
         return _dummy_llm(prompt) # Example: fallback to dummy on error
 
-# Quick self‑test when run as script
+# Quick self-test when run as script
 
 if __name__ == "__main__":
     print("Running self-test for JobParser and SkillNormalizer...")

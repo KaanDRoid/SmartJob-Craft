@@ -1,9 +1,10 @@
 """
-smartjobcraft_gaprec.py  –  Day 2: GapRecommender
--------------------------------------------------
-• summary.csv (Day 1.5) içindeki DÜŞÜK skorlu (<0.60) ilanlar için
-  5 maddelik “mikro-öğrenme” planı üretir.
-• Çıktılar:  ./learning_plans/<file_id>.md   (markdown)
+smartjobcraft_gaprec.py - gap recommender
+-----------------------------------------
+- For every job in summary.csv with a low score (< 0.60), asks the LLM for a
+  5-point micro-learning plan covering the missing skills.
+- Output: ./learning_plans/<file_id>.md (markdown)
+- PROMPT and LLM are also imported by the Streamlit UI.
 """
 from __future__ import annotations
 import csv, json, os, textwrap
@@ -15,10 +16,10 @@ USE_OPENAI = True # Set to False for dummy mode if needed
 
 # LLM back-end
 def _dummy_llm(prompt: str) -> str:
-    """Her beceri için 1 satırlık blog/YouTube önerisi döndürür (offline test)."""
+    """Returns a one-line study suggestion per missing skill (offline testing)."""
     missing_text = prompt.split("MISSING:")[-1].split("\n")[0] # Get text after MISSING:
     missing = [s.strip() for s in missing_text.split(",") if s.strip()]
-    bullets = [f"- **{skill}**: resmi dokümantasyon + 30 dk YouTube crash-course" for skill in missing[:5]]
+    bullets = [f"- **{skill}**: official docs + 30 min YouTube crash course" for skill in missing[:5]]
     return json.dumps({"plan": "\n".join(bullets)})
 
 if USE_OPENAI:
@@ -56,7 +57,7 @@ The candidate is applying for **{title}** but lacks:
 MISSING: {missing}
 
 Create a SHORT micro-learning plan in **exactly 5 bullet points**.
-Each bullet = resource  ➜ effort (h).  
+Each bullet = resource -> effort (h).  
 Return ONLY JSON: {{ "plan": "<markdown-bullets>" }}
 """).strip()
 
@@ -102,7 +103,7 @@ def main(summary_csv="summary.csv"):
 
         out_path = plans_dir / f"{row.get('file_id', 'unknown_file')}.md"
         out_path.write_text(md, encoding="utf-8")
-        print(f"✅  {out_path.name}  ({len(gaps)} gaps)")
+        print(f"{out_path.name} ({len(gaps)} gaps)")
 
 if __name__ == "__main__":
     # Determine the correct path for summary.csv, assuming it's in the parent directory of the script if run directly

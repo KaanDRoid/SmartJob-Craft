@@ -2,7 +2,6 @@ import re
 from pathlib import Path
 from typing import Set, List, Tuple
 import PyPDF2
-import pypdf # Ensure pypdf is imported
 from smartjobcraft_day1 import SkillNormalizer
 
 # Predefined list of common technical skills 
@@ -70,7 +69,7 @@ def extract_skills_and_languages(cv_path: Path, normalizer: SkillNormalizer) -> 
             technical_skills.add(canonical) 
     
     # Extract languages from the "Languages" section or general text
-    # A more robust way would be to look for a specific "Languages" section header
+    # A stricter approach would be to look for a specific "Languages" section header
     language_section_match = re.search(r"(Languages|Idiomas|Diller)\s*([\s\S]*?)(?:Technical Skills|Projects|Experience|Education|$)", raw_text, re.IGNORECASE)
     text_to_search_langs = raw_text # Default to searching the whole text
     if language_section_match:
@@ -94,7 +93,7 @@ def extract_cv_projects(cv_path: Path) -> list[str]:
     """Extracts project sections as text from a CV PDF file."""
     text = ""
     try:
-        reader = pypdf.PdfReader(cv_path)
+        reader = PyPDF2.PdfReader(str(cv_path))
         for page in reader.pages:
             extracted_page_text = page.extract_text()
             if extracted_page_text:
