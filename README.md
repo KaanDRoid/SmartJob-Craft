@@ -6,6 +6,30 @@ This is an early MVP built as a personal project.
 
 ## How it works
 
+Data flow in the Streamlit app (`smartjobcraft_ui.py`). Steps marked "OpenAI API" call `gpt-4o-mini`.
+
+```mermaid
+flowchart TD
+    CV["CV (PDF upload)"] --> CVP["cv_parser: PDF text, skills, languages"]
+    CV --> PRJ["projectranker: extract CV projects"]
+    CVP --> NORM["SkillNormalizer: canonical skill names"]
+    AD["Job ad (pasted text)"] --> JP["JobParser: job as JSON (OpenAI API)"]
+    JP --> NORM
+    NORM --> SC["score_candidate: must-have / nice-to-have match"]
+    NORM --> GAP["Skill gaps: job skills missing from CV"]
+    PRJ --> RANK["rank_projects: best project and coverage"]
+    JP --> RANK
+    RANK --> BONUS["Project bonus"]
+    SC --> FINAL["Final score"]
+    SC --> PLAN
+    BONUS --> FINAL
+    GAP --> PLAN["Micro-learning plan if score is below 0.60 (OpenAI API)"]
+    JP --> CL["Cover letter (OpenAI API)"]
+    RANK --> CL
+    CL --> PDF["Cover letter PDF (fpdf2)"]
+    FINAL --> CSV["Results CSV download"]
+```
+
 1. **CV parsing** (`cv_parser.py`): text is read with PyPDF2, tokenized and matched against a fixed list of technical skills, soft skills and languages (English, Spanish, Turkish).
 2. **Skill normalization** (`SkillNormalizer` in `smartjobcraft_day1.py`): skill variants are mapped to one canonical name using `tests/skills_variants.csv` (e.g. "ML" or "makine öğrenimi" -> Machine Learning), with a rapidfuzz fallback (WRatio >= 90).
 3. **Job parsing** (`JobParser`): a few-shot prompt sent to `gpt-4o-mini` returns the job as JSON.
