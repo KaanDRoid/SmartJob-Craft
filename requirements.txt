@@ -1,0 +1,7 @@
+streamlit
+openai>=1.0
+pandas
+rapidfuzz
+PyPDF2
+fpdf2
+pytest

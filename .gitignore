@@ -172,3 +172,15 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# SmartJob-Craft runtime output
+logs/
+tmp_cv.pdf
+coverletter.pdf
+*.pdf
+summary*.csv
+match_summary.csv
+job_json/
+job_json2/
+learning_plans/
+cover_letters/
